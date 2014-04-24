@@ -37,7 +37,7 @@
 
 \begin{abstract}
 
-This is my abstract.
+In this project we explored a dense space of 40 million image entries from Flickr in order to understand what the best approaches for analyzing and classifying the space. The image entries were obtained through the Flickr API which allowed us to collect meta data (including image tags). Given that downloading and processing 40 million images was not feasible we introduce a much smaller dataset of 10,000 images with 10 classes (1,000 samples per class) to observe some initial patterns in the data. We are motivated by simplicity in this research endeavor, with the belief that with much larger datasets, simple pattern recognition approaches will achieve sufficient accuracy. We extract color histograms and SIFT features from each of the images, implement locality sensitive hashing on individual segments of our feature vectors, and proceed to concatenate the hash to produce our feature vector. We then perform a k nearest neighbors (kNN) multi-classification in order to see the accuracy of our clusters.
 
 \end{abstract}
 
@@ -47,9 +47,33 @@ This is my abstract.
 
 \section{Introduction}
 
-Introduction
 
 \section{Related Work}
+
+\section{Data Collection}
+
+The initial objective of this project was to obtain 100 million images and perform simple classification approaches in a dense space in order to see if given a large enough dataset, simple techniques would succeed in classification. However, the tags we collected gave us 5 million tags (and 380 million connections between the tags and images) since each image had multiple tags associated with it. That stated we opted for a dataset of 10,000 images and 10 classes (1000 points per class) as a proof of concept for our overall goal.
+
+\subsection{Initial Dataset Analysis}
+
+In order to determine which classes would be benefitial to our analysis we obtained the top 40 tags in our entire dataset and then hand-picked the 10 least ambiguous tags. We selected the following:
+
+\begin{tabular}{ c c c }
+  Tag & Number of Images \\
+  portrait & 3,569,751 \\
+  bike & 1,641,568 \\
+  nature & 1,029,054 \\
+  water & 1,340,755 \\
+  people & 1,043,009 \\
+  tokyo & 1,774,381 \\
+  england & 1,010,046 \\
+  italia & 1,664,979 \\
+  street & 833,941 \\
+\end{tabular}
+
+Some of the tags we ruled out included \textit{green, 2009, san, red, geotagged, canon, yellow} because they were not necessarily representative of the image (\text{san, geotagged, canon, 2009}) or obviously representative and therefore too trivial (\textit{red, green, blue}). Dealing with user data made this a challenging problem as tags are not necessarily an accurate representation of the image and we acknowledge this early on.
+
+\subsection{Sample Dataset for Testing}
 
 
 \section{Conclusion & Lessons Learned}
